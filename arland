@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rahaman Survey Service</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f6f9;
+}
+
+.header {
+    background: #1e3a8a;
+    color: white;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.section {
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.light {
+    background-color: #eef2f7;
+}
+
+h2 {
+    color: #1e3a8a;
+}
+
+button {
+    padding: 12px 20px;
+    background-color: #1e3a8a;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+.footer {
+    background: #1e3a8a;
+    color: white;
+    text-align: center;
+    padding: 15px;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="header">
+    <h1>Rahaman Survey Service</h1>
+    <h3>Government Approved Land Surveyor</h3>
+    <p>25+ Years of Trusted Experience</p>
+    <p>📞 8145536724 | ✉️ example@gmail.com</p>
+    <p>Accurate Land Measurement | Boundary Fixing | Total Station Survey</p>
+</div>
+
+<div class="section">
+    <h2>Our Services</h2>
+    <p>✔ Land Measurement (Bigha, Acre, Decimal)</p>
+    <p>✔ Boundary Fixing</p>
+    <p>✔ Plot Division</p>
+    <p>✔ GPS & Total Station Survey</p>
+    <p>✔ Government Document Verification</p>
+</div>
+
+<div class="section light">
+    <h2>Book Survey Appointment</h2>
+
+    <!-- Calendly Inline Widget Start -->
+    <div class="calendly-inline-widget"
+         data-url=https://calendly.com/arlandsurvey01/30min
+         style="min-width:320px;height:700px;">
+    </div>
+    <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+    <!-- Calendly Inline Widget End -->
+
+</div>
+
+<div class="section">
+    <h2>Contact Us</h2>
+    <p>Call us directly for urgent booking</p>
+    <a href="tel:8145536724">
+        <button>Call Now</button>
+    </a>
+</div>
+
+<div class="footer">
+    © 2026 Rahaman Survey Service | All Rights Reserved
+</div>
+
+</body>
+</html>
