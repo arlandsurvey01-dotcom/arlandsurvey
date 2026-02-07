@@ -1,114 +1,146 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>AR LAND CARE</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>A.R LAND CARE | Land Survey Officer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: #f4f6f8;
+        }
 
-<style>.
-    header a {
-color: white;
-text-decoration: none;
-font-weight: bold;
-}
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #f4f6f9;
-}
+        header {
+            background: #0b3d0b;
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+        }
 
-.header {
-    background: #1e3a8a;
-    color: white;
-    padding: 40px 20px;
-    text-align: center;
-}
+        header h1 {
+            margin: 0;
+            font-size: 32px;
+        }
 
-.section {
-    padding: 40px 20px;
-    text-align: center;
-}
+        header p {
+            margin: 5px 0;
+        }
 
-.light {
-    background-color: #eef2f7;
-}
+        nav {
+            background: #063306;
+            text-align: center;
+            padding: 10px;
+        }
 
-h2 {
-    color: #1e3a8a;
-}
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: 500;
+        }
 
-button {
-    padding: 12px 20px;
-    background-color: #1e3a8a;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-}
+        section {
+            padding: 50px 20px;
+            text-align: center;
+        }
 
-button:hover {
-    opacity: 0.9;
-}
+        h2 {
+            color: #0b3d0b;
+            margin-bottom: 20px;
+        }
 
-.footer {
-    background: #1e3a8a;
-    color: white;
-    text-align: center;
-    padding: 15px;
-}
-</style>
+        .card {
+            background: white;
+            padding: 20px;
+            margin: 15px auto;
+            max-width: 600px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
 
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            margin-top: 15px;
+            background: #0b3d0b;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .whatsapp-btn {
+            background: #25D366;
+        }
+
+        footer {
+            background: #222;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 24px;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-<div class="header">
-    <h1>AR LAND SERVICE</h1>
-    <h3>Government Approved Land Surveyor</h3>
-    <p>25+ Years of Trusted Experience</p>
-    <p>
-📞 <a href="tel:8145536724">8145536724</a> |
-📧 <a href="mailto:arlandsurvet01@gmail.com">arlandsurvey01@gmail.com</a>
-</p>
-    <p>Accurate Land Measurement | Boundary Fixing | Total Station Survey</p>
-</div>
+<header>
+    <h1>A.R LAND CARE</h1>
+    <p>Accurate & Trusted Land Survey Services</p>
+    <p>Owner: MD Azizur Rahaman</p>
+</header>
 
-<div class="section">
+<nav>
+    <a href="#services">Services</a>
+    <a href="#area">Service Areas</a>
+    <a href="#contact">Contact</a>
+</nav>
+
+<section id="services">
     <h2>Our Services</h2>
-    <p>✔ Land Measurement (Bigha, Acre, Decimal)</p>
-    <p>✔ Boundary Fixing</p>
-    <p>✔ Plot Division</p>
-    <p>✔ GPS & Total Station Survey</p>
-    <p>✔ Government Document Verification</p>
-</div>
 
-<div class="section light">
+    <div class="card">Land Measurement & Demarcation</div>
+    <div class="card">Boundary Survey</div>
+    <div class="card">Agricultural Land Survey</div>
+    <div class="card">Plot Division & Layout</div>
+    <div class="card">Construction Layout Marking</div>
+
+</section>
+
+<section id="area">
+    <h2>Service Areas</h2>
+
+    <div class="card">
+        West Bengal<br>
+        Murshidabad<br>
+        Aurangabad<br>
+        Suti
+    </div>
+</section>
+
+<section id="contact">
     <h2>Book Survey Appointment</h2>
 
-    <!-- Calendly Inline Widget Start -->
-    <div class="calendly-inline-widget"
-         data-url=https://calendly.com/arlandsurvey01/30min
-         style="min-width:320px;height:700px;">
+    <div class="card">
+        <p><strong>Mobile:</strong> 8145536724</p>
+
+        <a class="btn whatsapp-btn"
+           href="https://wa.me/918145536724?text=Hello%20A.R%20Land%20Care,%20I%20want%20to%20book%20a%20land%20survey."
+           target="_blank">
+           Book via WhatsApp
+        </a>
     </div>
-    <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
-    <!-- Calendly Inline Widget End -->
+</section>
 
-</div>
-
-<div class="section">
-    <h2>Contact Us</h2>
-    <p>Call us directly for urgent booking</p>
-    <a href="tel:8145536724">
-        <button>Call Now</button>
-    </a>
-</div>
-
-<div class="footer">
-    © 2026 Rahaman Survey Service | All Rights Reserved
-</div>
+<footer>
+    © 2026 A.R LAND CARE | All Rights Reserved
+</footer>
 
 </body>
 </html>
-
-
-
