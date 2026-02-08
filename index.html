@@ -1,65 +1,98 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>IDEAL LAND CARE</title>
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/main.min.css" rel="stylesheet"/>
-<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
+<title>IDEAL LAND CARE</title>
 
 <style>
 body{
 margin:0;
 font-family:Arial;
-background:white;
+background:#f4f6fb;
 }
 
-.header{
-background:#0a3d91;
+header{
+background:linear-gradient(to right,#0a3d91,#1e5bc6);
 color:white;
-padding:15px 30px;
-display:flex;
-justify-content:space-between;
-align-items:center;
+padding:40px 20px;
+text-align:center;
 }
 
-.header h1{
+header h1{
 margin:0;
-font-size:24px;
+font-size:40px;
+letter-spacing:2px;
 }
 
-button{
-padding:8px 12px;
-background:#0a3d91;
-color:white;
-border:none;
-cursor:pointer;
-margin:5px 0;
+header p{
+margin-top:8px;
+font-size:16px;
 }
 
 .container{
-padding:30px;
+display:flex;
+flex-wrap:wrap;
+padding:40px 5%;
 }
 
-#calendar{
-max-width:900px;
-margin:auto;
+.left, .right{
+flex:1;
+min-width:300px;
+padding:20px;
 }
 
 .box{
-background:#f5f5f5;
-padding:15px;
-margin-top:20px;
+background:white;
+padding:20px;
+margin-bottom:20px;
+box-shadow:0 3px 8px rgba(0,0,0,0.1);
+border-radius:6px;
 }
 
-input{
-padding:8px;
-margin:5px 0;
+input, textarea{
 width:100%;
+padding:10px;
+margin:8px 0;
+border:1px solid #ccc;
+border-radius:4px;
 }
 
-.admin{
-display:none;
+button{
+padding:10px 15px;
+border:none;
+background:#0a3d91;
+color:white;
+cursor:pointer;
+border-radius:4px;
+}
+
+button:hover{
+background:#082c6b;
+}
+
+.whatsapp-btn{
+background:#25D366;
+display:inline-flex;
+align-items:center;
+gap:8px;
+border-radius:30px;
+padding:10px 18px;
+font-weight:bold;
+}
+
+.whatsapp-btn:hover{
+background:#1ebc5c;
+}
+
+.services li{
+margin-bottom:8px;
+}
+
+.map{
+width:100%;
+height:200px;
+border-radius:6px;
 }
 
 footer{
@@ -67,146 +100,109 @@ background:#0a3d91;
 color:white;
 text-align:center;
 padding:15px;
-margin-top:20px;
+margin-top:30px;
 }
 </style>
 </head>
 
 <body>
 
-<div class="header">
+<header>
 <h1>IDEAL LAND CARE</h1>
-<button onclick="toggleLang()">বাংলা</button>
-</div>
+<p>Land Surveyor – MD AZIZUR RAHAMAN</p>
+<p>Murshidabad | Aurangabad | Suti | West Bengal</p>
+</header>
 
 <div class="container">
 
-<h2 id="title">Survey Booking Calendar</h2>
-
-<div id="calendar"></div>
+<div class="left">
 
 <div class="box">
-<h3>Book Selected Date</h3>
-<input type="text" id="name" placeholder="Your Name">
-<input type="text" id="mobile" placeholder="Mobile Number">
-<input type="text" id="village" placeholder="Village">
-<input type="text" id="post" placeholder="Post Office">
-<input type="hidden" id="selectedDate">
-<button onclick="bookDate()">Confirm Booking</button>
+<h3>Book Survey</h3>
+
+<input type="text" placeholder="Your Name">
+
+<input type="tel" pattern="[0-9]{10}" maxlength="10" placeholder="Mobile Number (10 digits)">
+
+<textarea placeholder="Full Address"></textarea>
+
+<label>Select Date</label>
+<input type="date">
+
+<button>Submit Booking</button>
+
+<br><br>
+
+<a href="tel:8145536724">
+<button>Call Now</button>
+</a>
+
+<br><br>
+
+<a href="https://wa.me/918145536724?text=Hello%20IDEAL%20LAND%20CARE,%20I%20want%20to%20book%20a%20land%20survey." target="_blank">
+<button class="whatsapp-btn">📱 WhatsApp Booking</button>
+</a>
+
 </div>
 
 <div class="box">
-<h3>Google Map Location</h3>
-<iframe
-src="https://www.google.com/maps?q=Aurangabad,Murshidabad&output=embed"
-width="100%"
-height="200"
-style="border:0;">
+<h3>Land Area Calculator</h3>
+
+<input type="number" id="length" placeholder="Length (feet)">
+<input type="number" id="width" placeholder="Width (feet)">
+<button onclick="calc()">Calculate</button>
+<p id="result"></p>
+</div>
+
+</div>
+
+<div class="right">
+
+<div class="box">
+<h3>Our Services</h3>
+<ul class="services">
+<li>Land Measurement</li>
+<li>Land Sketch</li>
+<li>Plot Sketch</li>
+<li>Area Calculation</li>
+<li>Critical Land Discussion</li>
+</ul>
+</div>
+
+<div class="box">
+<h3>Qualification</h3>
+<p>Professional Land Surveyor</p>
+<p>10+ Years Field Experience</p>
+</div>
+
+<div class="box">
+<h3>Contact</h3>
+<p>📞 <a href="tel:8145536724">8145536724</a></p>
+<p>📧 <a href="mailto:example@gmail.com">example@gmail.com</a></p>
+</div>
+
+<div class="box">
+<h3>Location</h3>
+<iframe class="map"
+src="https://www.google.com/maps?q=Murshidabad,West%20Bengal&output=embed">
 </iframe>
 </div>
 
-<div class="box">
-<button onclick="adminLogin()">Admin Login</button>
-<div class="admin" id="adminPanel">
-<h3>Dashboard</h3>
-<p>Total Bookings: <span id="total"></span></p>
-<p>Today Bookings: <span id="today"></span></p>
-<p>This Month Bookings: <span id="month"></span></p>
-</div>
 </div>
 
 </div>
 
 <footer>
-Murshidabad | Aurangabad | Suti<br>
-© 2026 IDEAL LAND CARE
+© 2026 IDEAL LAND CARE | All Rights Reserved
 </footer>
 
 <script>
-
-let bookings = JSON.parse(localStorage.getItem("bookings")) || [];
-
-document.addEventListener('DOMContentLoaded', function() {
-
-var calendarEl = document.getElementById('calendar');
-var calendar = new FullCalendar.Calendar(calendarEl, {
-initialView: 'dayGridMonth',
-dateClick: function(info) {
-document.getElementById("selectedDate").value = info.dateStr;
-alert("Selected: " + info.dateStr);
-},
-events: bookings.map(b => ({
-title: "Booked",
-start: b.date,
-color: "red"
-}))
-});
-calendar.render();
-
-});
-
-function bookDate(){
-let date = document.getElementById("selectedDate").value;
-let name = document.getElementById("name").value;
-let mobile = document.getElementById("mobile").value;
-
-if(!date || !name || !mobile){
-alert("Fill required fields");
-return;
+function calc(){
+var l = document.getElementById("length").value;
+var w = document.getElementById("width").value;
+var area = l*w;
+document.getElementById("result").innerHTML = "Total Area: " + area + " sq ft";
 }
-
-if(bookings.some(b => b.date === date)){
-alert("Date already booked");
-return;
-}
-
-bookings.push({
-date: date,
-name: name,
-mobile: mobile,
-time: new Date()
-});
-
-localStorage.setItem("bookings", JSON.stringify(bookings));
-alert("Booking Successful");
-location.reload();
-}
-
-function adminLogin(){
-let pass = prompt("Enter Admin Password");
-if(pass === "1234"){
-document.getElementById("adminPanel").style.display="block";
-updateDashboard();
-}else{
-alert("Wrong Password");
-}
-}
-
-function updateDashboard(){
-let total = bookings.length;
-
-let todayDate = new Date().toISOString().split("T")[0];
-let today = bookings.filter(b => b.date === todayDate).length;
-
-let month = new Date().getMonth();
-let monthCount = bookings.filter(b => new Date(b.time).getMonth() === month).length;
-
-document.getElementById("total").innerText = total;
-document.getElementById("today").innerText = today;
-document.getElementById("month").innerText = monthCount;
-}
-
-let bengali = false;
-
-function toggleLang(){
-bengali = !bengali;
-if(bengali){
-document.getElementById("title").innerText="সার্ভে বুকিং ক্যালেন্ডার";
-}else{
-document.getElementById("title").innerText="Survey Booking Calendar";
-}
-}
-
 </script>
 
 </body>
