@@ -1,138 +1,125 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>IDEAL LAND CARE | Professional Land Surveyor</title>
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IDEAL LAND CARE</title>
 
 <style>
 body{
 margin:0;
-font-family:'Segoe UI',sans-serif;
-background:#eef3fb;
-color:#222;
-scroll-behavior:smooth;
+font-family:Arial;
+background:#f4f7fb;
+overflow-x:hidden;
+}
+
+/* ANIMATION */
+.fade{
+opacity:0;
+transform:translateY(20px);
+animation:fadeUp 0.8s forwards;
+}
+
+@keyframes fadeUp{
+to{
+opacity:1;
+transform:translateY(0);
+}
 }
 
 /* HEADER */
-.topbar{
-background:#0a3d91;
+header{
+background:linear-gradient(to right,#0a3d91,#1e5bc6);
 color:white;
-padding:10px 30px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-position:sticky;
-top:0;
-z-index:1000;
-}
-
-.topbar h1{
-margin:0;
-font-size:16px;
-font-weight:700;
-letter-spacing:1px;
-text-transform:uppercase;
-}
-
-.nav a{
-color:white;
-margin-left:25px;
-text-decoration:none;
-font-size:14px;
-font-weight:500;
-}
-
-.nav a:hover{
-opacity:0.7;
-}
-
-/* HERO */
-.hero{
-background:linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),
-url('https://images.unsplash.com/photo-1581091870627-3d4f8f6d47bb');
-background-size:cover;
-background-position:center;
-color:white;
-padding:60px 40px;
-text-align:left;
-display:flex;
-flex-direction:column;
-justify-content:center;
-min-height:220px;
-}
-
-.hero h2{
-font-size:22px;
-margin:0;
-letter-spacing:1px;
-font-weight:600;
-}
-
-.hero p{
-margin-top:8px;
-font-size:14px;
-opacity:0.9;
-}
-
-/* SECTION */
-.section{
-padding:70px 20px;
+padding:40px 20px;
 text-align:center;
+position:relative;
 }
 
-.section h2{
-margin-bottom:30px;
-font-size:32px;
-color:#0a3d91;
+header h1{
+margin:0;
+font-size:38px;
+letter-spacing:2px;
 }
 
-/* CARDS */
-.card{
+.lang-btn{
+position:absolute;
+right:20px;
+top:20px;
 background:white;
-max-width:700px;
-margin:20px auto;
-padding:25px;
-border-radius:10px;
-box-shadow:0 6px 15px rgba(0,0,0,0.1);
+color:#0a3d91;
+border:none;
+padding:6px 10px;
+cursor:pointer;
+border-radius:4px;
+}
+
+/* LAYOUT */
+.container{
+display:flex;
+flex-wrap:wrap;
+padding:40px 5%;
+gap:30px;
+}
+
+.left, .right{
+flex:1;
+min-width:300px;
+}
+
+.box{
+background:white;
+padding:20px;
+box-shadow:0 4px 15px rgba(0,0,0,0.1);
+border-radius:8px;
+margin-bottom:20px;
 transition:0.3s;
 }
 
-.card:hover{
+.box:hover{
 transform:translateY(-5px);
 }
 
 /* FORM */
-input,button{
-padding:12px;
-margin:10px;
-width:90%;
-max-width:350px;
-border-radius:5px;
+input, textarea{
+width:100%;
+padding:10px;
+margin:8px 0;
 border:1px solid #ccc;
-font-size:15px;
+border-radius:4px;
 }
 
 button{
+padding:10px 15px;
+border:none;
+border-radius:5px;
+cursor:pointer;
+}
+
+.submit{
 background:#0a3d91;
 color:white;
-border:none;
-cursor:pointer;
-font-weight:600;
+width:100%;
 }
 
-button:hover{
-background:#082d6e;
+.whatsapp{
+background:#25D366;
+color:white;
+width:100%;
+margin-top:10px;
+font-weight:bold;
+border-radius:30px;
 }
 
-/* ADMIN */
-.admin-box{
-display:none;
-background:white;
-max-width:800px;
-margin:30px auto;
-padding:25px;
-border-radius:10px;
-box-shadow:0 6px 15px rgba(0,0,0,0.1);
+.whatsapp:hover{
+background:#1ebd5a;
+}
+
+/* DASHBOARD */
+.dashboard{
+background:#eef3ff;
+padding:15px;
+border-radius:6px;
 }
 
 /* FOOTER */
@@ -140,7 +127,7 @@ footer{
 background:#0a3d91;
 color:white;
 text-align:center;
-padding:20px;
+padding:15px;
 margin-top:40px;
 }
 </style>
@@ -148,137 +135,138 @@ margin-top:40px;
 
 <body>
 
-<div class="topbar">
-<h1>IDEAL LAND CARE</h1>
-<div class="nav">
-<a href="#services">Services</a>
-<a href="#booking">Booking</a>
-<a href="#contact">Contact</a>
-<a href="#" onclick="showAdmin()">Admin</a>
-</div>
-</div>
+<header>
+<h1 id="title">IDEAL LAND CARE</h1>
+<p id="subtitle">Land Surveyor – MD AZIZUR RAHAMAN</p>
+<button class="lang-btn" onclick="toggleLang()">বাংলা</button>
+</header>
 
-<div class="hero">
-<h2>Professional Land Surveyor</h2>
-<p>Murshidabad | Aurangabad | Suti | West Bengal</p>
-</div>
+<div class="container fade">
 
-<div class="section" id="services">
-<h2>Our Services</h2>
+<div class="left">
 
-<div class="card">📏 Land Measurement</div>
-<div class="card">🗺️ Land & Plot Sketch</div>
-<div class="card">📐 Area Calculation</div>
-<div class="card">⚖️ Critical Land Consultation</div>
+<div class="box">
+<h3 id="bookTitle">Book Survey</h3>
 
-</div>
+<input type="text" id="name" placeholder="Your Name">
 
-<div class="section" id="booking">
-<h2>Book Survey Date</h2>
+<input type="tel" id="mobile" maxlength="10" pattern="[0-9]{10}" placeholder="10 Digit Mobile">
 
-<input type="text" id="name" placeholder="Your Name"><br>
-<input type="text" id="mobile" placeholder="Mobile Number"><br>
-<input type="date" id="date"><br>
+<textarea id="address" placeholder="Full Address"></textarea>
 
-<button onclick="book()">Submit Booking</button>
+<input type="date" id="date">
 
-<h3>Booked Dates</h3>
-<div id="bookedList"></div>
+<button class="submit" onclick="saveBooking()">Submit Booking</button>
 
-<br>
-
-<a href="https://wa.me/918145536724?text=Hello%20IDEAL%20LAND%20CARE,%20I%20want%20to%20book%20a%20land%20survey."
-target="_blank">
-<button style="background:#25D366;">Book via WhatsApp</button>
+<a href="#" id="whatsappLink" target="_blank">
+<button class="whatsapp">📱 WhatsApp Booking</button>
 </a>
 
 </div>
 
-<div class="admin-box" id="adminPanel">
-<h2>Admin Login</h2>
-<input type="password" id="adminPass" placeholder="Enter Password">
-<button onclick="login()">Login</button>
-
-<div id="adminContent" style="display:none;">
-<h3>All Bookings</h3>
-<div id="adminList"></div>
+<div class="box">
+<h3>Dashboard (Demo)</h3>
+<div class="dashboard">
+<p>Total Bookings: <span id="total">0</span></p>
+<p>Today's Bookings: <span id="today">0</span></p>
 </div>
 </div>
 
-<div class="section" id="contact">
-<h2>Contact</h2>
-<p>Land Surveyor: MD Azizur Rahaman</p>
-<p>📞 8145536724</p>
+</div>
+
+<div class="right">
+
+<div class="box">
+<h3 id="serviceTitle">Our Services</h3>
+<ul>
+<li>Land Measurement</li>
+<li>Land Sketch</li>
+<li>Plot Sketch</li>
+<li>Area Calculation</li>
+<li>Critical Land Discussion</li>
+</ul>
+</div>
+
+<div class="box">
+<h3>Location</h3>
+<iframe width="100%" height="180"
+src="https://www.google.com/maps?q=Murshidabad&output=embed">
+</iframe>
+</div>
+
+</div>
+
 </div>
 
 <footer>
-© 2026 IDEAL LAND CARE | All Rights Reserved
+© 2026 IDEAL LAND CARE
 </footer>
 
 <script>
-let bookings = JSON.parse(localStorage.getItem("idealBookings")) || [];
 
-function displayBookings(){
-let list=document.getElementById("bookedList");
-list.innerHTML="";
-bookings.forEach(b=>{
-list.innerHTML+="<div>"+b.date+"</div>";
-});
-}
+let bookings = JSON.parse(localStorage.getItem("demoBookings")) || [];
 
-function book(){
+function saveBooking(){
 let name=document.getElementById("name").value;
 let mobile=document.getElementById("mobile").value;
+let address=document.getElementById("address").value;
 let date=document.getElementById("date").value;
 
-if(!name || !mobile || !date){
+if(!name || !mobile || !address || !date){
 alert("Fill all fields");
 return;
 }
 
-if(bookings.some(b=>b.date===date)){
-alert("Date already booked!");
+if(mobile.length!=10){
+alert("Enter valid 10 digit number");
 return;
 }
 
-bookings.push({name,mobile,date});
-localStorage.setItem("idealBookings",JSON.stringify(bookings));
-alert("Booking Successful!");
-displayBookings();
+bookings.push({name,mobile,address,date});
+localStorage.setItem("demoBookings",JSON.stringify(bookings));
+
+updateDashboard();
+
+let message="Hello IDEAL LAND CARE,%0AName: "+name+
+"%0AMobile: "+mobile+
+"%0AAddress: "+address+
+"%0ADate: "+date;
+
+document.getElementById("whatsappLink").href=
+"https://wa.me/918145536724?text="+message;
+
+alert("Booking Saved (Demo)");
 }
 
-function showAdmin(){
-document.getElementById("adminPanel").style.display="block";
+function updateDashboard(){
+document.getElementById("total").innerText=bookings.length;
+
+let today=new Date().toISOString().split('T')[0];
+let todayCount=bookings.filter(b=>b.date===today).length;
+document.getElementById("today").innerText=todayCount;
 }
 
-function login(){
-let pass=document.getElementById("adminPass").value;
-if(pass==="1234"){
-document.getElementById("adminContent").style.display="block";
-showAdminBookings();
+updateDashboard();
+
+/* BENGALI TOGGLE */
+let isBengali=false;
+
+function toggleLang(){
+isBengali=!isBengali;
+
+if(isBengali){
+document.getElementById("title").innerText="আইডিয়াল ল্যান্ড কেয়ার";
+document.getElementById("subtitle").innerText="ভূমি জরিপকারী – এমডি আজিজুর রহমান";
+document.getElementById("bookTitle").innerText="সার্ভে বুকিং";
+document.getElementById("serviceTitle").innerText="আমাদের পরিষেবা";
 }else{
-alert("Wrong Password");
+document.getElementById("title").innerText="IDEAL LAND CARE";
+document.getElementById("subtitle").innerText="Land Surveyor – MD AZIZUR RAHAMAN";
+document.getElementById("bookTitle").innerText="Book Survey";
+document.getElementById("serviceTitle").innerText="Our Services";
 }
 }
 
-function showAdminBookings(){
-let adminList=document.getElementById("adminList");
-adminList.innerHTML="";
-bookings.forEach((b,i)=>{
-adminList.innerHTML+=
-"<div>"+b.name+" | "+b.mobile+" | "+b.date+
-" <button onclick='deleteBooking("+i+")'>Delete</button></div>";
-});
-}
-
-function deleteBooking(index){
-bookings.splice(index,1);
-localStorage.setItem("idealBookings",JSON.stringify(bookings));
-showAdminBookings();
-displayBookings();
-}
-
-displayBookings();
 </script>
 
 </body>
