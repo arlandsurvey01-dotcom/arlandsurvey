@@ -212,7 +212,14 @@ Fill the form below. Booking details will be sent to our official email and What
 <input type="text" name="name" placeholder="Full Name" required
 style="width:100%; padding:14px; margin-bottom:15px; border:1px solid #ddd; border-radius:8px;">
 
-<input type="tel" name="mobile" placeholder="10 Digit Mobile Number" required
+<input 
+type="tel" 
+name="mobile" 
+placeholder="10 Digit Mobile Number" 
+pattern="[0-9]{10}" 
+maxlength="10"
+inputmode="numeric"
+required>
 style="width:100%; padding:14px; margin-bottom:15px; border:1px solid #ddd; border-radius:8px;">
 
 <input type="text" name="village" placeholder="Village / Area Name" required
@@ -350,36 +357,6 @@ After submitting the form:
 
 </section>
 
-
-<!-- ================= WHATSAPP AUTO SCRIPT ================= -->
-
-<script>
-
-document.getElementById("bookingForm").addEventListener("submit", function(e){
-
-let name = document.getElementById("name").value;
-let mobile = document.getElementById("mobile").value;
-let village = document.getElementById("village").value;
-let service = document.getElementById("serviceType").value;
-let date = document.getElementById("date").value;
-
-let message = 
-`New Survey Booking:
-Name: ${name}
-Mobile: ${mobile}
-Village: ${village}
-Service: ${service}
-Date: ${date}`;
-
-let whatsappURL = "https://wa.me/918145536724?text=" + encodeURIComponent(message);
-
-setTimeout(()=>{
-window.open(whatsappURL,"_blank");
-},800);
-
-});
-
-</script>
 <!-- ================= GALLERY SECTION ================= -->
 
 <section id="gallery" style="background:#f3f4f6;">
@@ -529,7 +506,6 @@ Service Areas: Murshidabad, Berhampore, Jangipur
 </footer>
 
 <!-- EmailJS Script -->
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 
 <script>
 (function(){
@@ -537,6 +513,7 @@ Service Areas: Murshidabad, Berhampore, Jangipur
 })();
 
 document.getElementById("form").addEventListener("submit", function(event) {
+
   event.preventDefault();
 
   document.getElementById("booking_id").value =
@@ -548,16 +525,49 @@ document.getElementById("form").addEventListener("submit", function(event) {
     this
   )
   .then(function() {
+
+    var name = document.querySelector('input[name="name"]').value;
+    var mobile = document.querySelector('input[name="mobile"]').value;
+    var village = document.querySelector('input[name="village"]').value;
+    var service = document.querySelector('select[name="service"]').value;
+    var date = document.querySelector('input[name="date"]').value;
+    var bookingId = document.getElementById("booking_id").value;
+
+    var message =
+"New Survey Booking:\n" +
+"Name: " + name + "\n" +
+"Mobile: " + mobile + "\n" +
+"Village: " + village + "\n" +
+"Service: " + service + "\n" +
+"Date: " + date + "\n" +
+"Booking ID: " + bookingId;
+
+    var whatsappURL =
+"https://wa.me/918145536724?text=" + encodeURIComponent(message);
+
+    window.open(whatsappURL, "_blank");
+
     alert("✅ Booking Sent Successfully!");
+
     document.getElementById("form").reset();
+
   }, function(error) {
+
     alert("❌ Failed: " + JSON.stringify(error));
+
   });
+
+});
+
+// 10 digit mobile restriction
+document.querySelector('input[name="mobile"]').addEventListener("input", function () {
+  this.value = this.value.replace(/\D/g, '').slice(0,10);
 });
 </script>
 
 </body>
 </html>
+
 
 
 
