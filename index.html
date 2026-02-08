@@ -1,195 +1,214 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+<title>IDEAL LAND CARE | Professional Land Surveyor</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>IDEAL LAND CARE</title>
 
 <style>
 body{
 margin:0;
-font-family:Arial;
-background:#f4f6fb;
+font-family:'Segoe UI',sans-serif;
+background:#eef3fb;
+color:#222;
+scroll-behavior:smooth;
 }
 
-header{
-background:linear-gradient(to right,#0a3d91,#1e5bc6);
+/* HEADER */
+.topbar{
+background:#0a3d91;
 color:white;
-padding:40px 20px;
+padding:10px 30px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+position:sticky;
+top:0;
+z-index:1000;
+}
+
+.topbar h1{
+margin:0;
+font-size:16px;
+font-weight:700;
+letter-spacing:1px;
+text-transform:uppercase;
+}
+
+.nav a{
+color:white;
+margin-left:25px;
+text-decoration:none;
+font-size:14px;
+font-weight:500;
+}
+
+.nav a:hover{
+opacity:0.7;
+}
+
+/* HERO */
+.hero{
+background:linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),
+url('https://images.unsplash.com/photo-1581091870627-3d4f8f6d47bb');
+background-size:cover;
+background-position:center;
+color:white;
+padding:60px 40px;
+text-align:left;
+display:flex;
+flex-direction:column;
+justify-content:center;
+min-height:220px;
+}
+
+.hero h2{
+font-size:22px;
+margin:0;
+letter-spacing:1px;
+font-weight:600;
+}
+
+.hero p{
+margin-top:8px;
+font-size:14px;
+opacity:0.9;
+}
+
+/* SECTION */
+.section{
+padding:70px 20px;
 text-align:center;
 }
 
-header h1{
-margin:0;
-font-size:40px;
-letter-spacing:2px;
+.section h2{
+margin-bottom:30px;
+font-size:32px;
+color:#0a3d91;
 }
 
-header p{
-margin-top:8px;
-font-size:16px;
-}
-
-.container{
-display:flex;
-flex-wrap:wrap;
-padding:40px 5%;
-}
-
-.left, .right{
-flex:1;
-min-width:300px;
-padding:20px;
-}
-
-.box{
+/* CARDS */
+.card{
 background:white;
-padding:20px;
-margin-bottom:20px;
-box-shadow:0 3px 8px rgba(0,0,0,0.1);
-border-radius:6px;
+max-width:700px;
+margin:20px auto;
+padding:25px;
+border-radius:10px;
+box-shadow:0 6px 15px rgba(0,0,0,0.1);
+transition:0.3s;
 }
 
-input, textarea{
-width:100%;
-padding:10px;
-margin:8px 0;
+.card:hover{
+transform:translateY(-5px);
+}
+
+/* FORM */
+input,button{
+padding:12px;
+margin:10px;
+width:90%;
+max-width:350px;
+border-radius:5px;
 border:1px solid #ccc;
-border-radius:4px;
+font-size:15px;
 }
 
 button{
-padding:10px 15px;
-border:none;
 background:#0a3d91;
 color:white;
+border:none;
 cursor:pointer;
-border-radius:4px;
+font-weight:600;
 }
 
 button:hover{
-background:#082c6b;
+background:#082d6e;
 }
 
-.whatsapp-btn{
-background:#25D366;
-display:inline-flex;
-align-items:center;
-gap:8px;
-border-radius:30px;
-padding:10px 18px;
-font-weight:bold;
+/* ADMIN */
+.admin-box{
+display:none;
+background:white;
+max-width:800px;
+margin:30px auto;
+padding:25px;
+border-radius:10px;
+box-shadow:0 6px 15px rgba(0,0,0,0.1);
 }
 
-.whatsapp-btn:hover{
-background:#1ebc5c;
-}
-
-.services li{
-margin-bottom:8px;
-}
-
-.map{
-width:100%;
-height:200px;
-border-radius:6px;
-}
-
+/* FOOTER */
 footer{
 background:#0a3d91;
 color:white;
 text-align:center;
-padding:15px;
-margin-top:30px;
+padding:20px;
+margin-top:40px;
 }
 </style>
 </head>
 
 <body>
 
-<header>
+<div class="topbar">
 <h1>IDEAL LAND CARE</h1>
-<p>Land Surveyor – MD AZIZUR RAHAMAN</p>
+<div class="nav">
+<a href="#services">Services</a>
+<a href="#booking">Booking</a>
+<a href="#contact">Contact</a>
+<a href="#" onclick="showAdmin()">Admin</a>
+</div>
+</div>
+
+<div class="hero">
+<h2>Professional Land Surveyor</h2>
 <p>Murshidabad | Aurangabad | Suti | West Bengal</p>
-</header>
+</div>
 
-<div class="container">
+<div class="section" id="services">
+<h2>Our Services</h2>
 
-<div class="left">
+<div class="card">📏 Land Measurement</div>
+<div class="card">🗺️ Land & Plot Sketch</div>
+<div class="card">📐 Area Calculation</div>
+<div class="card">⚖️ Critical Land Consultation</div>
 
-<div class="box">
-<h3>Book Survey</h3>
+</div>
 
-<input type="text" placeholder="Your Name">
+<div class="section" id="booking">
+<h2>Book Survey Date</h2>
 
-<input type="tel" pattern="[0-9]{10}" maxlength="10" placeholder="Mobile Number (10 digits)">
+<input type="text" id="name" placeholder="Your Name"><br>
+<input type="text" id="mobile" placeholder="Mobile Number"><br>
+<input type="date" id="date"><br>
 
-<textarea placeholder="Full Address"></textarea>
+<button onclick="book()">Submit Booking</button>
 
-<label>Select Date</label>
-<input type="date">
+<h3>Booked Dates</h3>
+<div id="bookedList"></div>
 
-<button>Submit Booking</button>
+<br>
 
-<br><br>
-
-<a href="tel:8145536724">
-<button>Call Now</button>
+<a href="https://wa.me/918145536724?text=Hello%20IDEAL%20LAND%20CARE,%20I%20want%20to%20book%20a%20land%20survey."
+target="_blank">
+<button style="background:#25D366;">Book via WhatsApp</button>
 </a>
 
-<br><br>
-
-<a href="https://wa.me/918145536724?text=Hello%20IDEAL%20LAND%20CARE,%20I%20want%20to%20book%20a%20land%20survey." target="_blank">
-<button class="whatsapp-btn">📱 WhatsApp Booking</button>
-</a>
-
 </div>
 
-<div class="box">
-<h3>Land Area Calculator</h3>
+<div class="admin-box" id="adminPanel">
+<h2>Admin Login</h2>
+<input type="password" id="adminPass" placeholder="Enter Password">
+<button onclick="login()">Login</button>
 
-<input type="number" id="length" placeholder="Length (feet)">
-<input type="number" id="width" placeholder="Width (feet)">
-<button onclick="calc()">Calculate</button>
-<p id="result"></p>
+<div id="adminContent" style="display:none;">
+<h3>All Bookings</h3>
+<div id="adminList"></div>
+</div>
 </div>
 
-</div>
-
-<div class="right">
-
-<div class="box">
-<h3>Our Services</h3>
-<ul class="services">
-<li>Land Measurement</li>
-<li>Land Sketch</li>
-<li>Plot Sketch</li>
-<li>Area Calculation</li>
-<li>Critical Land Discussion</li>
-</ul>
-</div>
-
-<div class="box">
-<h3>Qualification</h3>
-<p>Professional Land Surveyor</p>
-<p>10+ Years Field Experience</p>
-</div>
-
-<div class="box">
-<h3>Contact</h3>
-<p>📞 <a href="tel:8145536724">8145536724</a></p>
-<p>📧 <a href="mailto:example@gmail.com">example@gmail.com</a></p>
-</div>
-
-<div class="box">
-<h3>Location</h3>
-<iframe class="map"
-src="https://www.google.com/maps?q=Murshidabad,West%20Bengal&output=embed">
-</iframe>
-</div>
-
-</div>
-
+<div class="section" id="contact">
+<h2>Contact</h2>
+<p>Land Surveyor: MD Azizur Rahaman</p>
+<p>📞 8145536724</p>
 </div>
 
 <footer>
@@ -197,12 +216,69 @@ src="https://www.google.com/maps?q=Murshidabad,West%20Bengal&output=embed">
 </footer>
 
 <script>
-function calc(){
-var l = document.getElementById("length").value;
-var w = document.getElementById("width").value;
-var area = l*w;
-document.getElementById("result").innerHTML = "Total Area: " + area + " sq ft";
+let bookings = JSON.parse(localStorage.getItem("idealBookings")) || [];
+
+function displayBookings(){
+let list=document.getElementById("bookedList");
+list.innerHTML="";
+bookings.forEach(b=>{
+list.innerHTML+="<div>"+b.date+"</div>";
+});
 }
+
+function book(){
+let name=document.getElementById("name").value;
+let mobile=document.getElementById("mobile").value;
+let date=document.getElementById("date").value;
+
+if(!name || !mobile || !date){
+alert("Fill all fields");
+return;
+}
+
+if(bookings.some(b=>b.date===date)){
+alert("Date already booked!");
+return;
+}
+
+bookings.push({name,mobile,date});
+localStorage.setItem("idealBookings",JSON.stringify(bookings));
+alert("Booking Successful!");
+displayBookings();
+}
+
+function showAdmin(){
+document.getElementById("adminPanel").style.display="block";
+}
+
+function login(){
+let pass=document.getElementById("adminPass").value;
+if(pass==="1234"){
+document.getElementById("adminContent").style.display="block";
+showAdminBookings();
+}else{
+alert("Wrong Password");
+}
+}
+
+function showAdminBookings(){
+let adminList=document.getElementById("adminList");
+adminList.innerHTML="";
+bookings.forEach((b,i)=>{
+adminList.innerHTML+=
+"<div>"+b.name+" | "+b.mobile+" | "+b.date+
+" <button onclick='deleteBooking("+i+")'>Delete</button></div>";
+});
+}
+
+function deleteBooking(index){
+bookings.splice(index,1);
+localStorage.setItem("idealBookings",JSON.stringify(bookings));
+showAdminBookings();
+displayBookings();
+}
+
+displayBookings();
 </script>
 
 </body>
