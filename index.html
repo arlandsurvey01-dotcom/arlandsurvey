@@ -207,20 +207,18 @@ Call Now
 Fill the form below. Booking details will be sent to our official email and WhatsApp.
 </p>
 
-<form id="bookingForm"
-action="https://formsubmit.co/arahamanabd@gmail.com"
-method="POST">
-
-<input type="text" id="name" name="Full Name" placeholder="Full Name" required
+<form id="form">
+  
+<input type="text" name="name" placeholder="Full Name" required
 style="width:100%; padding:14px; margin-bottom:15px; border:1px solid #ddd; border-radius:8px;">
 
-<input type="tel" id="mobile" name="Mobile Number" placeholder="10 Digit Mobile Number" required
+<input type="tel" name="mobile" placeholder="10 Digit Mobile Number" required
 style="width:100%; padding:14px; margin-bottom:15px; border:1px solid #ddd; border-radius:8px;">
 
-<input type="text" id="village" name="Village / Area" placeholder="Village / Area Name" required
+<input type="text" name="village" placeholder="Village / Area Name" required
 style="width:100%; padding:14px; margin-bottom:15px; border:1px solid #ddd; border-radius:8px;">
 
-<select id="serviceType" name="Service Type" required
+<select name="service" required
 style="width:100%; padding:14px; margin-bottom:15px; border:1px solid #ddd; border-radius:8px;">
 <option value="">Select Survey Type</option>
 <option>Land Measurement</option>
@@ -230,13 +228,10 @@ style="width:100%; padding:14px; margin-bottom:15px; border:1px solid #ddd; bord
 <option>Boundary Verification</option>
 </select>
 
-<input type="date" id="date" name="Preferred Date" required
+<input type="date" name="date" required
 style="width:100%; padding:14px; margin-bottom:15px; border:1px solid #ddd; border-radius:8px;">
 
-<!-- Hidden FormSubmit Settings -->
-<input type="hidden" name="_subject" value="New Survey Booking - IDEAL LAND CARE">
-<input type="hidden" name="_captcha" value="false">
-<input type="hidden" name="_template" value="table">
+<input type="hidden" name="booking_id" id="booking_id">
 
 <button type="submit" class="btn btn-primary" style="width:100%;">
 Submit Booking
@@ -533,9 +528,38 @@ Service Areas: Murshidabad, Berhampore, Jangipur
 
 </footer>
 
+<!-- EmailJS Script -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+<script>
+(function(){
+  emailjs.init("KS6Vr4h-L9AH6IiYZ");
+})();
+
+document.getElementById("form").addEventListener("submit", function(event) {
+  event.preventDefault();
+
+  document.getElementById("booking_id").value =
+  "ID" + Math.floor(Math.random() * 100000);
+
+  emailjs.sendForm(
+    "service_atbb3wh",
+    "template_6u4lpva",
+    this
+  )
+  .then(function() {
+    alert("✅ Booking Sent Successfully!");
+    document.getElementById("form").reset();
+  }, function(error) {
+    alert("❌ Failed: " + JSON.stringify(error));
+  });
+});
+</script>
 
 </body>
 </html>
+
+
 
 
 
