@@ -1,147 +1,213 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>A.R LAND CARE | Land Survey Officer</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IDEAL LAND CARE</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <style>
-        body {
-            margin: 0;
-            font-family: 'Segoe UI', sans-serif;
-            background: #f4f6f8;
-        }
+<link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/main.min.css" rel="stylesheet"/>
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
 
-        header {
-            background: #0b3d0b;
-            color: white;
-            padding: 70px 40px;
-            text-align: center;
-        }
+<style>
+body{
+margin:0;
+font-family:Arial;
+background:white;
+}
 
-        header h1 {
-            margin: 0;
-            font-size: 72px;
-        }
+.header{
+background:#0a3d91;
+color:white;
+padding:15px 30px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
 
-        header p {
-            margin: 10px 0;
-        }
+.header h1{
+margin:0;
+font-size:24px;
+}
 
-        nav {
-            background: #063306;
-            text-align: uppper center;
-            padding: 20px;
-        }
+button{
+padding:8px 12px;
+background:#0a3d91;
+color:white;
+border:none;
+cursor:pointer;
+margin:5px 0;
+}
 
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin: 0 15px;
-            font-weight: 500;
-        }
+.container{
+padding:30px;
+}
 
-        section {
-            padding: 50px 20px;
-            text-align: center;
-        }
+#calendar{
+max-width:900px;
+margin:auto;
+}
 
-        h2 {
-            color: #0b3d0b;
-            margin-bottom: 20px;
-        }
+.box{
+background:#f5f5f5;
+padding:15px;
+margin-top:20px;
+}
 
-        .card {
-            background: white;
-            padding: 20px;
-            margin: 15px auto;
-            max-width: 600px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            border-radius: 8px;
-        }
+input{
+padding:8px;
+margin:5px 0;
+width:100%;
+}
 
-        .btn {
-            display: inline-block;
-            padding: 12px 25px;
-            margin-top: 15px;
-            background: #0b3d0b;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-        }
+.admin{
+display:none;
+}
 
-        .whatsapp-btn {
-            background: #25D366;
-        }
-
-        footer {
-            background: #222;
-            color: white;
-            text-align: center;
-            padding: 20px;
-        }
-
-        @media (max-width: 600px) {
-            header h1 {
-                font-size: 24px;
-            }
-        }
-    </style>
+footer{
+background:#0a3d91;
+color:white;
+text-align:center;
+padding:15px;
+margin-top:20px;
+}
+</style>
 </head>
 
 <body>
 
-<header>
-    <h1>A.R LAND CARE</h1>
-    <p>Accurate & Trusted Land Survey Services</p>
-    <p>Owner: MD Azizur Rahaman</p>
-</header>
+<div class="header">
+<h1>IDEAL LAND CARE</h1>
+<button onclick="toggleLang()">বাংলা</button>
+</div>
 
-<nav>
-    <a href="#services">Services</a>
-    <a href="#area">Service Areas</a>
-    <a href="#contact">Contact</a>
-</nav>
+<div class="container">
 
-<section id="services">
-    <h2>Our Services</h2>
+<h2 id="title">Survey Booking Calendar</h2>
 
-    <div class="card">Land Measurement & Demarcation</div>
-    <div class="card">Boundary Survey</div>
-    <div class="card">Agricultural Land Survey</div>
-    <div class="card">Plot Division & Layout</div>
-    <div class="card">Construction Layout Marking</div>
+<div id="calendar"></div>
 
-</section>
+<div class="box">
+<h3>Book Selected Date</h3>
+<input type="text" id="name" placeholder="Your Name">
+<input type="text" id="mobile" placeholder="Mobile Number">
+<input type="text" id="village" placeholder="Village">
+<input type="text" id="post" placeholder="Post Office">
+<input type="hidden" id="selectedDate">
+<button onclick="bookDate()">Confirm Booking</button>
+</div>
 
-<section id="area">
-    <h2>Service Areas</h2>
+<div class="box">
+<h3>Google Map Location</h3>
+<iframe
+src="https://www.google.com/maps?q=Aurangabad,Murshidabad&output=embed"
+width="100%"
+height="200"
+style="border:0;">
+</iframe>
+</div>
 
-    <div class="card">
-        West Bengal<br>
-        Murshidabad<br>
-        Aurangabad<br>
-        Suti
-    </div>
-</section>
+<div class="box">
+<button onclick="adminLogin()">Admin Login</button>
+<div class="admin" id="adminPanel">
+<h3>Dashboard</h3>
+<p>Total Bookings: <span id="total"></span></p>
+<p>Today Bookings: <span id="today"></span></p>
+<p>This Month Bookings: <span id="month"></span></p>
+</div>
+</div>
 
-<section id="contact">
-    <h2>Book Survey Appointment</h2>
-
-    <div class="card">
-        <p><strong>Mobile:</strong> 8145536724</p>
-
-        <a class="btn whatsapp-btn"
-           href="https://wa.me/918145536724?text=Hello%20A.R%20Land%20Care,%20I%20want%20to%20book%20a%20land%20survey."
-           target="_blank">
-           Book via WhatsApp
-        </a>
-    </div>
-</section>
+</div>
 
 <footer>
-    © 2026 A.R LAND CARE | All Rights Reserved
+Murshidabad | Aurangabad | Suti<br>
+© 2026 IDEAL LAND CARE
 </footer>
+
+<script>
+
+let bookings = JSON.parse(localStorage.getItem("bookings")) || [];
+
+document.addEventListener('DOMContentLoaded', function() {
+
+var calendarEl = document.getElementById('calendar');
+var calendar = new FullCalendar.Calendar(calendarEl, {
+initialView: 'dayGridMonth',
+dateClick: function(info) {
+document.getElementById("selectedDate").value = info.dateStr;
+alert("Selected: " + info.dateStr);
+},
+events: bookings.map(b => ({
+title: "Booked",
+start: b.date,
+color: "red"
+}))
+});
+calendar.render();
+
+});
+
+function bookDate(){
+let date = document.getElementById("selectedDate").value;
+let name = document.getElementById("name").value;
+let mobile = document.getElementById("mobile").value;
+
+if(!date || !name || !mobile){
+alert("Fill required fields");
+return;
+}
+
+if(bookings.some(b => b.date === date)){
+alert("Date already booked");
+return;
+}
+
+bookings.push({
+date: date,
+name: name,
+mobile: mobile,
+time: new Date()
+});
+
+localStorage.setItem("bookings", JSON.stringify(bookings));
+alert("Booking Successful");
+location.reload();
+}
+
+function adminLogin(){
+let pass = prompt("Enter Admin Password");
+if(pass === "1234"){
+document.getElementById("adminPanel").style.display="block";
+updateDashboard();
+}else{
+alert("Wrong Password");
+}
+}
+
+function updateDashboard(){
+let total = bookings.length;
+
+let todayDate = new Date().toISOString().split("T")[0];
+let today = bookings.filter(b => b.date === todayDate).length;
+
+let month = new Date().getMonth();
+let monthCount = bookings.filter(b => new Date(b.time).getMonth() === month).length;
+
+document.getElementById("total").innerText = total;
+document.getElementById("today").innerText = today;
+document.getElementById("month").innerText = monthCount;
+}
+
+let bengali = false;
+
+function toggleLang(){
+bengali = !bengali;
+if(bengali){
+document.getElementById("title").innerText="সার্ভে বুকিং ক্যালেন্ডার";
+}else{
+document.getElementById("title").innerText="Survey Booking Calendar";
+}
+}
+
+</script>
 
 </body>
 </html>
-
