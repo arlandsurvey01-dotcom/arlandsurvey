@@ -589,17 +589,28 @@ color:var(--secondary);
 <!-- ADMIN LOGIN MODAL HTML -->
 <!-- ================================================= -->
 
-<div id="adminModal" class="admin-modal">
-<div class="admin-box">
+<!-- ADMIN LOGIN MODAL -->
+
+<div id="adminModal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.5); justify-content:center; align-items:center; z-index:9999;">
+
+<div style="background:white; padding:25px; border-radius:10px; width:300px; text-align:center;">
 
 <h3>Admin Login</h3>
 
-<input type="password" id="adminPassword" placeholder="Enter Admin Password">
+<button onclick="sendOTP()" style="padding:8px 15px; margin-top:10px;">
+Send OTP
+</button>
 
-<button onclick="verifyAdmin()">Login</button>
-<button onclick="closeAdmin()">Cancel</button>
+<div id="otpSection" style="display:none; margin-top:15px;">
+<input type="text" id="otpInput" placeholder="Enter OTP" style="width:100%; padding:8px;">
+<button onclick="verifyOTP()" style="margin-top:10px; padding:8px 15px;">
+Verify OTP
+</button>
+</div>
 
-<p id="adminError" style="color:red;"></p>
+<p id="adminError" style="color:red; margin-top:10px;"></p>
+
+<button onclick="closeAdmin()" style="margin-top:10px;">Cancel</button>
 
 </div>
 </div>
@@ -770,38 +781,62 @@ info.innerText = "No Slots Available";
 }
 }
 
-/* ================= ADMIN SYSTEM ================= */
+<!-- ========= OTP ADMIN SYSTEM ========= -->
 
-/* Stored MD5 hash for password: 19821982 */
-const storedHash = "240be518fabd2724ddb6f04eeb0e4d27";
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+<script>
+(function(){
+    emailjs.init("KS6Vr4h-L9AH6IiYZ");
+})();
+
+let generatedOTP = "";
+let adminEmail = "arlandsurvey01@gmail.com";
+
+function generateOTP(){
+    return Math.floor(100000 + Math.random() * 900000).toString();
+}
 
 function openAdmin(){
-document.getElementById("adminModal").style.display="flex";
+    document.getElementById("adminModal").style.display="flex";
 }
 
 function closeAdmin(){
-document.getElementById("adminModal").style.display="none";
-document.getElementById("adminPassword").value="";
-document.getElementById("adminError").innerText="";
+    document.getElementById("adminModal").style.display="none";
+    document.getElementById("otpInput").value="";
+    document.getElementById("adminError").innerText="";
 }
 
-function md5(str){
-return CryptoJS.MD5(str).toString();
+function sendOTP(){
+    generatedOTP = generateOTP();
+
+    emailjs.send("service_atbb3wh","template_92xkzgx",{
+        email: adminEmail,
+        passcode: generatedOTP,
+        time: "10 Minutes"
+    })
+    .then(function(){
+        alert("OTP Sent to Gmail ✅");
+        document.getElementById("otpSection").style.display="block";
+    }, function(error){
+        alert("Failed to send OTP ❌");
+        console.log(error);
+    });
 }
 
-function verifyAdmin(){
+function verifyOTP(){
+    let userOTP = document.getElementById("otpInput").value;
 
-let input = document.getElementById("adminPassword").value;
-let hash = md5(input);
-
-if(hash === storedHash){
-alert("Admin Access Granted");
-closeAdmin();
-}else{
-document.getElementById("adminError").innerText="Wrong Password";
+    if(userOTP === generatedOTP){
+        alert("Admin Access Granted ✅");
+        closeAdmin();
+        document.getElementById("adminPanel").style.display="block";
+    } else {
+        document.getElementById("adminError").innerText="Wrong OTP";
+    }
 }
-}
-
+</script>
+ 
 /* ================= EXPORT BOOKINGS ================= */
 
 function exportBookings(){
@@ -826,8 +861,6 @@ displayBookings();
 
 </script>
 
-<!-- MD5 LIBRARY -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
 <!-- ================================================= -->
 <!-- SERVICES SECTION -->
 <!-- ================================================= -->
@@ -2109,6 +2142,7 @@ footerCopy.innerHTML =
 
 </body>
 </html>
+
 
 
 
